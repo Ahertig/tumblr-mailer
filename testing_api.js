@@ -7,8 +7,17 @@ var client = tumblr.createClient({
   token_secret: 'Wuwhus1qI2x14VKbIKlUXFvUREgnWBTIql9ddLOrVdEDBA7mpR'
 });
 
-client.posts('alyssaathopperacademy.tumblr.com', function(err, blog){
-  for (var i = 0; i < blog.posts.length; i++) {
-    Date.prototype.getDay() - blog.posts[i].date.
-  }
-})
+
+var latestPosts = function() {
+  client.posts('alyssaathopperacademy.tumblr.com', function(err, blog){
+    var latestPosts = [];
+    for (var i = 0; i < blog.posts.length; i++) {
+      if (Math.floor((new Date() - new Date(blog.posts[i].date)) / 86400000) <= 7) {
+        latestPosts.push(blog.posts[i]);
+      }
+    }
+    console.log(latestPosts);
+  });
+}
+
+console.log(latestPosts());

@@ -22,8 +22,6 @@ function csvParse(file) {
 
 var contactInfo = csvParse(csvFile);
 
-var customizedTemplate = ejs.render(emailTemplate, contactInfo[0]);
-
 var client = tumblr.createClient({
   consumer_key: 'C0W3ktczxDQH2v1Cd4eCCCt0MaBA7BsS62eqrizrs0pU09NCmf',
   consumer_secret: 'We68CpjELEXJswQ8d1FVeUTmy44ZIqkZLh3T61ya4f3gdj0grY',
@@ -31,10 +29,9 @@ var client = tumblr.createClient({
   token_secret: 'Wuwhus1qI2x14VKbIKlUXFvUREgnWBTIql9ddLOrVdEDBA7mpR'
 });
 
-client.posts('alyssaathopperacademy.tumblr.com', function(err, blog){
-  console.log(blog);
-})
+// posts function
 
+var customizedTemplate = ejs.render(emailTemplate, contactInfo[0]);
 
 
 
